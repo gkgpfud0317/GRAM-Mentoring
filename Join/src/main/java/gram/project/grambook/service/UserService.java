@@ -14,6 +14,14 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    public boolean cheakuserIdDuplicate(String userId) {
+        return userRepository.existsByuserID(userId);
+    }
+
+    public boolean cheaknameDuplicate(String name) {
+        return userRepository.existsByname(name);
+    }
+
     public String join(JoinDto joinDto) {
         User user = User.builder()
                 .name(joinDto.getName())
@@ -21,6 +29,6 @@ public class UserService {
                 .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
                 .build();
         userRepository.save(user);
-        return "회원가입 성공 !!";
+        return "Success";
     }
 }
