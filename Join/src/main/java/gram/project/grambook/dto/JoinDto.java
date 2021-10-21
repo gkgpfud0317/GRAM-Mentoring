@@ -5,9 +5,6 @@ import lombok.*;
 import javax.validation.constraints.Size;
 
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class JoinDto {
 
     @Size(min = 2)
@@ -18,4 +15,5 @@ public class JoinDto {
 
     @Size(min = 8, max = 15)
     private String password;
+
 }
