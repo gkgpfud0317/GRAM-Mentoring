@@ -6,24 +6,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/user/join")
+    @PostMapping("/join")
     public String join(@RequestBody JoinDto joinDto) {
         return userService.join(joinDto);
     }
 
-    @GetMapping("/user/cheakname")
-    public ResponseEntity<Boolean> cheaknameDuplicate(@PathVariable String name) {
-        return ResponseEntity.ok(UserService.cheaknameDuplicate(name));
+    @GetMapping("/{name}")
+    public ResponseEntity<String> cheaknameDuplicate(@PathVariable String name) {
+        return userService.cheaknameDuplicate(name);
     }
 
-    @GetMapping("/user/userId")
-    public ResponseEntity<Boolean> cheakuserIdDuplicate(@PathVariable String userId) {
-        return ResponseEntity.ok(UserService.cheakuserIdDuplicate(userId));
+    @GetMapping("/{userId}")
+    public ResponseEntity<String> cheakuserIdDuplicate(@PathVariable String userId) {
+        return userService.cheakuserIdDuplicate(userId);
     }
 }
