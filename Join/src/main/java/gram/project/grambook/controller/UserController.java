@@ -18,13 +18,13 @@ public class UserController {
         return userService.join(joinDto);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<String> cheaknameDuplicate(@PathVariable String name) {
-        return userService.cheaknameDuplicate(name);
+    @GetMapping("/name/{name}")
+    public ResponseEntity<String> checkNameDuplicate(@PathVariable String name) {
+        return userService.checkNameDuplicate(name);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<String> cheakuserIdDuplicate(@PathVariable String userId) {
-        return userService.cheakuserIdDuplicate(userId);
+    @GetMapping("/userId/{userId}")
+    public ResponseEntity<String> checkUserIdDuplicate(@PathVariable String userId) {
+        return userService.checkUserIdDuplicate(userId);
     }
 }
