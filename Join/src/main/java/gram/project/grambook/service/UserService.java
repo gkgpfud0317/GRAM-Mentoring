@@ -16,16 +16,18 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public ResponseEntity<String> cheakuserIdDuplicate(String userId) {
-
-        userRepository.existsByuserID(userId);
+    public ResponseEntity<String> checkUserIdDuplicate(String userId) {
+        if(userRepository.existsByUserId(userId)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User Already Exists");
+        }
 
         return ResponseEntity.status(HttpStatus.OK).body("SUCCESS");
     }
 
-    public ResponseEntity<String> cheaknameDuplicate(String name) {
-
-        userRepository.existsByname(name);
+    public ResponseEntity<String> checkNameDuplicate(String name) {
+        if(userRepository.existsByName(name)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User Already Exists");
+        }
 
         return ResponseEntity.status(HttpStatus.OK).body("SUCCESS");
     }
