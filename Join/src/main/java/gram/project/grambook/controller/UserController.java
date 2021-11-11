@@ -1,5 +1,4 @@
 package gram.project.grambook.controller;
-
 import gram.project.grambook.dto.JoinDto;
 import gram.project.grambook.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -27,4 +26,6 @@ public class UserController {
     public ResponseEntity<String> checkUserIdDuplicate(@PathVariable String userId) {
         return userService.checkUserIdDuplicate(userId);
     }
+
 }
+
