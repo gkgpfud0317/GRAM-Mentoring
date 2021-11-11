@@ -1,6 +1,7 @@
 package gram.project.grambook.entity;
 
 import lombok.*;
+import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer;
 
 import javax.persistence.*;
 
@@ -22,4 +23,5 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
 }
