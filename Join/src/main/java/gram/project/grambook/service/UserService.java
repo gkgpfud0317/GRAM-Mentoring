@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity<String> checkUserIdDuplicate(String userId) {
         if(userRepository.existsByUserId(userId)) {
@@ -37,7 +38,7 @@ public class UserService {
         userRepository.save(User.builder()
                 .name(joinDto.getName())
                 .userId(joinDto.getUserId())
-                .password(bCryptPasswordEncoder.encode(joinDto.getPassword()))
+                .password(passwordEncoder.encode(joinDto.getPassword()))
                 .build());
 
         return "Success";
