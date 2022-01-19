@@ -1,1 +1,2 @@
-GRAM-Mentoring
+# 🎀 GRAM
+멘토링을 받았던 곳입니다
